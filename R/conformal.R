@@ -66,7 +66,6 @@ confidence_interval <- function(Y1,Y0,T1,T0,estimation_method,alpha,ci_grid){
     for (ind in 1:length(ci_grid)){
       Y1_0_temp <- Y1_temp
       Y1_0_temp[(T0+1)] <- Y1_temp[(T0+1)] - ci_grid[ind]
-
       if (estimation_method=="classo"){
         u_hat <- classo(Y1_0_temp,Y0_temp)$u.hat
       }
