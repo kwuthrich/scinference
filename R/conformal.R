@@ -24,7 +24,7 @@ movingblock <- function(Y1,Y0,T1,T0,theta0,estimation_method){
   return(p)
 }
 
-# All/iid permutations (use random subsample of all permutations)
+# All/iid permutations (use random subsample of size n_perm all permutations)
 iid <- function(Y1,Y0,T1,T0,theta0,estimation_method,n_perm){
   T01 <- T0+T1
 
