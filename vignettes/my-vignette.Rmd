@@ -3,7 +3,7 @@ title: "Inference for synthetic control methods: the scinference package"
 author: "Victor Chernozhukov, Kaspar Wuthrich, Yinchu Zhu"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{Inference for synthetic control methods: the scinference package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
