@@ -15,7 +15,7 @@
 #' @param ci_grid grid for the confidence interval
 #' @param alpha significance level; default \code{alpha} = 0.1
 #' @param n_perm number of permutation (relevant for iid permutations); default = 5000
-#' @param lsei_type option for lsei (package limSolve) used for sc
+#' @param lsei_type option for lsei (package limSolve) used for sc; default = 1
 #' @return p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}
 
 #' @export
@@ -31,7 +31,7 @@ scinference <-
            ci_grid = NULL,
            alpha = 0.1,
            n_perm = 5000,
-           lsei_type = 2) {
+           lsei_type = 1) {
 
   # preliminaries
   if(length(Y1)!=(T0+T1)) stop("length of Y1 needs to be equal to T")
