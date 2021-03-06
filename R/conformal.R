@@ -1,5 +1,5 @@
 # Moving block permutations
-movingblock <- function(Y1,Y0,T1,T0,theta0,estimation_method){
+movingblock <- function(Y1,Y0,T1,T0,theta0,estimation_method,lsei_type){
   T01 <- T0+T1
 
   Y1_0 <- Y1
@@ -9,7 +9,7 @@ movingblock <- function(Y1,Y0,T1,T0,theta0,estimation_method){
     u.hat <- classo(Y1_0,Y0)$u.hat
   }
   if (estimation_method=="sc"){
-    u.hat <- sc(Y1_0,Y0)$u.hat
+    u.hat <- sc(Y1_0,Y0,lsei_type)$u.hat
   }
   if (estimation_method=="did"){
     u.hat <- did(Y1_0,Y0)$u.hat
@@ -25,7 +25,7 @@ movingblock <- function(Y1,Y0,T1,T0,theta0,estimation_method){
 }
 
 # All/iid permutations (use random subsample of size n_perm all permutations)
-iid <- function(Y1,Y0,T1,T0,theta0,estimation_method,n_perm){
+iid <- function(Y1,Y0,T1,T0,theta0,estimation_method,n_perm,lsei_type){
   T01 <- T0+T1
 
   Y1_0 <- Y1
@@ -35,7 +35,7 @@ iid <- function(Y1,Y0,T1,T0,theta0,estimation_method,n_perm){
     u.hat <- classo(Y1_0,Y0)$u.hat
   }
   if (estimation_method=="sc"){
-    u.hat <- sc(Y1_0,Y0)$u.hat
+    u.hat <- sc(Y1_0,Y0,lsei_type)$u.hat
   }
   if (estimation_method=="did"){
     u.hat <- did(Y1_0,Y0)$u.hat
@@ -54,7 +54,7 @@ iid <- function(Y1,Y0,T1,T0,theta0,estimation_method,n_perm){
 }
 
 # Confidence interval via test inversion
-confidence_interval <- function(Y1,Y0,T1,T0,estimation_method,alpha,ci_grid){
+confidence_interval <- function(Y1,Y0,T1,T0,estimation_method,alpha,ci_grid,lsei_type){
 
   lb <- ub <- rep(NA,T1)
   for (t in 1:T1){
@@ -70,7 +70,7 @@ confidence_interval <- function(Y1,Y0,T1,T0,estimation_method,alpha,ci_grid){
         u_hat <- classo(Y1_0_temp,Y0_temp)$u.hat
       }
       if (estimation_method=="sc"){
-        u_hat <- sc(Y1_0_temp,Y0_temp)$u.hat
+        u_hat <- sc(Y1_0_temp,Y0_temp,lsei_type)$u.hat
       }
       if (estimation_method=="did"){
         u_hat <- did(Y1_0_temp,Y0_temp)$u.hat

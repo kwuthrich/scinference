@@ -15,6 +15,7 @@
 #' @param ci_grid grid for the confidence interval
 #' @param alpha significance level; default \code{alpha} = 0.1
 #' @param n_perm number of permutation (relevant for iid permutations); default = 5000
+#' @param lsei_type option for lsei (package limSolve) used for sc
 #' @return p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}
 
 #' @export
@@ -29,7 +30,8 @@ scinference <-
            permutation_method = "mb",
            ci_grid = NULL,
            alpha = 0.1,
-           n_perm = 5000) {
+           n_perm = 5000,
+           lsei_type = 2) {
 
   # preliminaries
   if(length(Y1)!=(T0+T1)) stop("length of Y1 needs to be equal to T")
@@ -45,10 +47,10 @@ scinference <-
   # p-value for overall null hypothesis
 
   if(permutation_method == "mb") {
-    p_val <- movingblock(Y1=Y1,Y0=Y0,T1=T1,T0=T0,theta0=theta0,estimation_method=estimation_method)
+    p_val <- movingblock(Y1=Y1,Y0=Y0,T1=T1,T0=T0,theta0=theta0,estimation_method=estimation_method,lsei_type=lsei_type)
   }
   if(permutation_method == "iid") {
-    p_val <- iid(Y1=Y1,Y0=Y0,T1=T1,T0=T0,theta0=theta0,estimation_method=estimation_method,n_perm=n_perm)
+    p_val <- iid(Y1=Y1,Y0=Y0,T1=T1,T0=T0,theta0=theta0,estimation_method=estimation_method,n_perm=n_perm,lsei_type=lsei_type)
   }
 
   # pointwise confidence intervals
@@ -57,7 +59,7 @@ scinference <-
     if(is.null(ci_grid)){
       stop("no grid specified for confidence interval")
     }
-    obj <- confidence_interval(Y1=Y1,Y0=Y0,T1=T1,T0=T0,estimation_method=estimation_method,alpha=alpha,ci_grid=ci_grid)
+    obj <- confidence_interval(Y1=Y1,Y0=Y0,T1=T1,T0=T0,estimation_method=estimation_method,alpha=alpha,ci_grid=ci_grid,lsei_type=lsei_type)
     ub <- obj$ub
     lb <- obj$lb
   } else {
