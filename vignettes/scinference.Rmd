@@ -2,6 +2,7 @@
 title: "Inference for synthetic control methods: the scinference package"
 author: "Victor Chernozhukov, Kaspar Wuthrich, Yinchu Zhu"
 output: rmarkdown::html_vignette
+date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{Inference for synthetic control methods: the scinference package}
   %\VignetteEngine{knitr::rmarkdown}
