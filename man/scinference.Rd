@@ -15,7 +15,8 @@ scinference(
   permutation_method = "mb",
   ci_grid = NULL,
   alpha = 0.1,
-  n_perm = 5000
+  n_perm = 5000,
+  lsei_type = 1
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ scinference(
 \item{alpha}{significance level; default \code{alpha} = 0.1}
 
 \item{n_perm}{number of permutation (relevant for iid permutations); default = 5000}
+
+\item{lsei_type}{option for lsei (package limSolve) used for sc; default = 1}
 }
 \value{
 p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}

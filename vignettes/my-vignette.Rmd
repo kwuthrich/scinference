@@ -29,8 +29,6 @@ The package implements three different estimators of the counterfactuals: differ
 
 You can download the package via github.
 ```{r install}
-#install.packages("devtools")
-#devtools::install_github("kwuthrich/scinference")
 library(scinference)
 ```
 After installing the package, we recommend reading the help file for the command.
