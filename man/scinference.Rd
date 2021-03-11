@@ -9,14 +9,16 @@ scinference(
   Y0,
   T1,
   T0,
+  inference_method = "conformal",
+  alpha = 0.1,
   ci = FALSE,
   theta0 = 0,
   estimation_method = "sc",
   permutation_method = "mb",
   ci_grid = NULL,
-  alpha = 0.1,
   n_perm = 5000,
-  lsei_type = 1
+  lsei_type = 1,
+  K = 2
 )
 }
 \arguments{
@@ -28,24 +30,28 @@ scinference(
 
 \item{T0}{number of pre-treatment periods}
 
+\item{inference_method}{inference method; conformal inference ("conformal",default), t-test ("ttest")}
+
+\item{alpha}{significance level; default \code{alpha} = 0.1}
+
 \item{ci}{logical, indicating whether pointwise confidence intervals are reported; default \code{ci=FALSE}}
 
 \item{theta0}{null hypothesis for treatment effect trajectory (T1 x 1 vector or scalar if constant effects null); default \code{theta0}=0}
 
-\item{estimation_method}{estimation method; difference-in-differences ("did"), synthetic control ("sc", default), constrained lasso ("classo")}
+\item{estimation_method}{estimation method; difference-in-differences ("did"), synthetic control ("sc", default), constrained lasso ("classo"). Note that constrained lasso is not implemented for the t-test.}
 
 \item{permutation_method}{permutation method; moving block permutations ("mb", default), iid permutations ("iid")}
 
 \item{ci_grid}{grid for the confidence interval}
 
-\item{alpha}{significance level; default \code{alpha} = 0.1}
-
 \item{n_perm}{number of permutation (relevant for iid permutations); default = 5000}
 
 \item{lsei_type}{option for lsei (package limSolve) used for sc; default = 1}
+
+\item{K}{K>1 number of cross-fits for t-test; default = 2}
 }
 \value{
-p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}
+conformal inference: p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}; t-test: ATT estimate and confidence interval
 }
 \description{
 The function \code{scinference} implements the inference methods for synthetic controls proposed by Chernozhukov et al. (2020). The paper is available here: https://arxiv.org/abs/1712.09089.
