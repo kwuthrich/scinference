@@ -102,9 +102,11 @@ We apply the t-test with synthetic control and $K\in \{2,3\}$ to estimate the AT
 ```{r ttest}
 ttest_K2 <- scinference(Y1,Y0,T1=T1,T0=T0,inference_method="ttest",K=2)
 ttest_K2$att 
+ttest_K2$se 
 ttest_K2$lb
 ttest_K2$ub
 ttest_K3 <- scinference(Y1,Y0,T1=T1,T0=T0,inference_method="ttest",K=3)
+ttest_K2$se 
 ttest_K3$att 
 ttest_K3$lb
 ttest_K3$ub

@@ -18,7 +18,7 @@
 #' @param n_perm number of permutation (relevant for iid permutations); default = 5000
 #' @param lsei_type option for lsei (package limSolve) used for sc; default = 1
 #' @param K K>1 number of cross-fits for t-test; default = 2
-#' @return conformal inference: p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}; t-test: ATT estimate and confidence interval
+#' @return conformal inference: p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}; t-test: ATT estimate, standard error, and confidence interval
 
 #' @export
 scinference <-
@@ -94,7 +94,7 @@ scinference <-
     lb  <- att - qt(1-alpha/2,df=K-1)*se
     ub  <- att + qt(1-alpha/2,df=K-1)*se
 
-    return(list(att=att,lb=lb,ub=ub))
+    return(list(att=att,se=se,lb=lb,ub=ub))
 
   }
 

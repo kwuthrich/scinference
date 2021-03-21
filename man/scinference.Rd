@@ -51,10 +51,10 @@ scinference(
 \item{K}{K>1 number of cross-fits for t-test; default = 2}
 }
 \value{
-conformal inference: p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}; t-test: ATT estimate and confidence interval
+conformal inference: p-value for testing the null that \code{theta=theta0} and pointwise CI (lower bounds and upper bounds) if \code{ci=TRUE}; t-test: ATT estimate, standard error, and confidence interval
 }
 \description{
-The function \code{scinference} implements the inference methods for synthetic controls proposed by Chernozhukov et al. (2020). The paper is available here: https://arxiv.org/abs/1712.09089.
+The function \code{scinference} implements the inference methods for synthetic controls proposed by Chernozhukov et al. (2020a,b).
 The methods apply to a canonical synthetic control setup with 1 treated unit and J control units.
 The treated unit is untreated for the first \code{T0} periods and treated for the remaining \code{T1=T-T0} periods.
 }
