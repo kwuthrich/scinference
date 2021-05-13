@@ -11,7 +11,7 @@ sc <- function(Y1,Y0,lsei_type){
   f <- 1
   g <- diag(x=1,J,J)
   h <- matrix(0,J,1)
-  w.hat <- limSolve::lsei(A=Y0,B=Y1,E=e,F=f,G=g,H=h,type=,lsei_type)$X
+  w.hat <- limSolve::lsei(A=Y0,B=Y1,E=e,F=f,G=g,H=h,type=lsei_type)$X
   u.hat <- Y1-Y0%*%w.hat
   return(list(u.hat=u.hat,w.hat=w.hat))
 }
